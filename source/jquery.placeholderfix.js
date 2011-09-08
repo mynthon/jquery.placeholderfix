@@ -26,10 +26,12 @@
 						'line-height': $input.height() + 'px'
 					}
 					extSpan = {
-						'vertical-align' : 'middle'
+						'line-height': 'inherit'
 					}
 				}else if($input.get(0).tagName == 'TEXTAREA'){
-					//pass
+					extLabel = {
+						'line-height': $input.css('line-height')
+					}
 				}
 				
 				return {
@@ -93,13 +95,13 @@
 					var $this = $(this)
 					var id = $this.attr('id') || 'placeholder_fix_' + i + '_' + (+new Date());
 					var content = options.content !== '' ? options.content : $this.attr(options.attr) || 'Placeholder';
-					content = options.nl ? content.replace(/\\n/g, '<br />') : content
+					content = options.nl ? content.replace(/\t\t/g, '<br />') : content
 					var label = $('<label style="vertical-align:middle;" for="' + id + '"></label>');
 					var span = $('<span>' + content + '</span>');
 					var wrapper;
 					var defaultCSS;
 					
-					$this.wrap('<div id="wrapper_for_' + id + '" class="placeholder_fix_wrapper"></div>');
+					$this.wrap('<div id="wrapper_for_' + id + '" class="placeholderfix_wrapper"></div>');
 					wrapper = $('div#wrapper_for_' + id)
 					label.append(span);
 					wrapper.append(label);
