@@ -93,11 +93,11 @@
 					var $this = $(this)
 					var id = $this.attr('id') || 'placeholder_fix_' + i + '_' + (+new Date());
 					var content = options.content !== '' ? options.content : $this.attr(options.attr) || 'Placeholder';
+					content = options.nl ? content.replace(/\\n/g, '<br />') : content
 					var label = $('<label style="vertical-align:middle;" for="' + id + '"></label>');
 					var span = $('<span>' + content + '</span>');
 					var wrapper;
 					var defaultCSS;
-					content = options.nl ? content.replace(/\\n/g, '<br />') : content
 					
 					$this.wrap('<div id="wrapper_for_' + id + '" class="placeholder_fix_wrapper"></div>');
 					wrapper = $('div#wrapper_for_' + id)
